@@ -54,6 +54,7 @@ END main..
 DELIMITER ;
 
 --Ejercicio 5
+
 DROP PROCEDURE IF EXISTS 2009rechazados;
 
 DELIMITER ..
@@ -62,6 +63,21 @@ CREATE PROCEDURE 2009rechazados()
 
 main:BEGIN
 SELECT * FROM pedido WHERE YEAR(fecha_pedido) = 2009 AND estado = "Rechazado";
+
+END main..
+
+DELIMITER ;
+
+--Ejercicio 6
+
+DROP PROCEDURE IF EXISTS 2008paypal;
+
+DELIMITER ..
+
+CREATE PROCEDURE 2008paypal()
+
+main:BEGIN
+SELECT * FROM pago WHERE YEAR(fecha_pago) = 2008 AND forma_pago = "PayPal" ORDER BY total DESC;
 
 END main..
 
