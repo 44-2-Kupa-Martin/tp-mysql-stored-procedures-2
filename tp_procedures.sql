@@ -233,3 +233,45 @@ main:BEGIN
 END main$$
 
 DELIMITER ;
+
+--Ej 14
+DROP PROCEDURE IF EXISTS usp_CountClientsInMadrid;
+
+DELIMITER $$
+
+CREATE PROCEDURE usp_CountClientsInMadrid()
+main:BEGIN
+    SELECT COUNT(codigo_cliente) AS "clientes" FROM cliente WHERE ciudad LIKE "Madrid";
+END main$$
+
+DELIMITER ;
+
+--Ej 15
+DROP PROCEDURE IF EXISTS usp_CountClientsInM;
+
+DELIMITER $$
+
+CREATE PROCEDURE usp_CountClientsInM()
+main:BEGIN
+    SELECT COUNT(codigo_cliente) AS "clientes" FROM cliente WHERE ciudad LIKE "M%";
+END main$$
+
+DELIMITER ;
+
+--Ej 16
+DROP PROCEDURE IF EXISTS usp_HighestCreditClient;
+
+DELIMITER $$
+
+CREATE PROCEDURE usp_HighestCreditClient()
+main:BEGIN
+    DECLARE highest DECIMAL(15, 2) DEFAULT (SELECT MAX(limite_credito) FROM cliente);
+    SELECT 
+        nombre_cliente 
+    FROM 
+        cliente 
+    WHERE 
+        limite_credito = highest;
+END main$$
+
+DELIMITER ;
