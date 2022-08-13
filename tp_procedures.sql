@@ -12,6 +12,18 @@ END main$$
 
 DELIMITER ;
 
+--Ejercicio 2
+
+DROP PROCEDURE IF EXISTS jefes7;
+
+DELIMITER ..
+CREATE PROCEDURE jefes7()
+main: BEGIN
+SELECT nombre, apellido1, apellido2, email FROM empleado WHERE codigo_jefe = 7;
+END main.. 
+
+DELIMITER ;
+
 --Ej 9
 DROP PROCEDURE IF EXISTS usp_ListPastClients;
 
