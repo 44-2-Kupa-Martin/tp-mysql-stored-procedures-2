@@ -39,6 +39,34 @@ END main..
 
 DELIMITER ;
 
+--Ejercicio 4
+
+DROP PROCEDURE IF EXISTS 2diasantes;
+
+DELIMITER ..
+
+CREATE PROCEDURE 2diasantes()
+
+main:BEGIN
+SELECT  codigo_pedido, codigo_cliente, fecha_esperada, fecha_entrega  FROM pedido WHERE DATE_SUB(fecha_esperada, INTERVAL 2 DAY) > fecha_entrega;
+END main..
+
+DELIMITER ;
+
+--Ejercicio 5
+DROP PROCEDURE IF EXISTS 2009rechazados;
+
+DELIMITER ..
+
+CREATE PROCEDURE 2009rechazados()
+
+main:BEGIN
+SELECT * FROM pedido WHERE YEAR(fecha_pedido) = 2009 AND estado = "Rechazado";
+
+END main..
+
+DELIMITER ;
+
 --Ej 9
 DROP PROCEDURE IF EXISTS usp_ListPastClients;
 
