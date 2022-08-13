@@ -24,6 +24,21 @@ END main..
 
 DELIMITER ;
 
+--Ejercicio 3
+
+DROP PROCEDURE IF EXISTS pedidostarde;
+
+DELIMITER ..
+
+CREATE PROCEDURE pedidostarde()
+
+main:BEGIN
+SELECT codigo_pedido, codigo_cliente, fecha_esperada, fecha_entrega FROM pedido WHERE fecha_esperada < fecha_entrega;
+
+END main..
+
+DELIMITER ;
+
 --Ej 9
 DROP PROCEDURE IF EXISTS usp_ListPastClients;
 
