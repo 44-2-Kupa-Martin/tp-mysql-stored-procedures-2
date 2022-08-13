@@ -83,6 +83,38 @@ END main..
 
 DELIMITER ;
 
+--Ejercicio 7
+
+DROP PROCEDURE IF EXISTS stocknamentales;
+
+DELIMITER ..
+
+CREATE PROCEDURE stocknamentales()
+
+main:BEGIN
+SELECT * FROM producto WHERE gama = "Ornamentales" AND cantidad_en_stock >= 100 ORDER BY precio_venta DESC;
+
+END main..
+
+DELIMITER ;
+
+--Ejercicio 8
+
+DROP PROCEDURE IF EXISTS madridventas;
+
+DELIMITER ..
+
+CREATE PROCEDURE madridventas()
+
+main:BEGIN
+SELECT * FROM cliente WHERE ciudad = "Madrid" AND codigo_empleado_rep_ventas IN (11, 30);
+
+END main..
+
+DELIMITER ;
+
+CALL madridventas();
+
 --Ej 9
 DROP PROCEDURE IF EXISTS usp_ListPastClients;
 
