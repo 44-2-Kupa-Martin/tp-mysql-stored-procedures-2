@@ -309,7 +309,7 @@ DELIMITER //
 
 CREATE PROCEDURE codcliente2008 ()
 main:BEGIN
-	SELECT codigo_cliente FROM pago WHERE YEAR(fecha_pago) = 2008
+	SELECT codigo_cliente FROM pago WHERE YEAR(fecha_pago) = 2008;
 END main//
 
 DELIMITER ;
@@ -320,7 +320,7 @@ DROP PROCEDURE IF EXISTS empleadosenlacompania;
 	
 CREATE PROCEDURE empleadosenlacompania ()
 main:BEGIN
-	SELECT COUNT(codigo_empleado) AS Cantidad_de_empleado FROM empleado
+	SELECT COUNT(codigo_empleado) AS Cantidad_de_empleado FROM empleado;
 END main//
 
 DELIMITER ;
@@ -329,7 +329,7 @@ DROP PROCEDURE IF EXISTS pagopromedio2009;
 	
 CREATE PROCEDURE pagopromedio2009 ()
 main:BEGIN
-	SELECT AVG(total) AS Pago_Promedio FROM pago WHERE YEAR(fecha_pago) = 2009
+	SELECT AVG(total) AS Pago_Promedio FROM pago WHERE YEAR(fecha_pago) = 2009;
 END main//
 
 DELIMITER ;
@@ -362,7 +362,7 @@ DROP PROCEDURE IF EXISTS preciominmax;
 	
 CREATE PROCEDURE preciominmax ()
 main:BEGIN
-	select nombre, precio_venta from producto where precio_venta =(select max(precio_venta) FROM producto) or precio_venta = (select min(precio_venta) FROM producto)
+	select nombre, precio_venta from producto where precio_venta =(select max(precio_venta) FROM producto) or precio_venta = (select min(precio_venta) FROM producto);
 END main //
 
 DELIMITER ;
