@@ -275,3 +275,94 @@ main:BEGIN
 END main$$
 
 DELIMITER ;
+
+--EJ 17
+DROP PROCEDURE IF EXISTS codOficinaCiudad;
+
+DELIMITER //
+
+CREATE PROCEDURE codOficinaCiudad ()
+main:BEGIN
+  SELECT codigo_oficina, ciudad from oficina;
+END main//
+
+DELIMITER ;
+
+
+--EJ 18
+DROP PROCEDURE IF EXISTS preciomasalto;
+
+DELIMITER //
+
+CREATE PROCEDURE preciomasalto ()
+main:BEGIN
+	SELECT nombre, precio_venta FROM producto WHERE precio_venta=(SELECT MAX(precio_venta) FROM producto);
+END main//
+
+DELIMITER ;
+
+--EJ 19
+
+DROP PROCEDURE IF EXISTS codcliente2008;
+
+DELIMITER //
+
+CREATE PROCEDURE codcliente2008 ()
+main:BEGIN
+	SELECT codigo_cliente FROM pago WHERE YEAR(fecha_pago) = 2008
+END main//
+
+DELIMITER ;
+
+	--EJ 20
+	
+DROP PROCEDURE IF EXISTS empleadosenlacompania;
+	
+CREATE PROCEDURE empleadosenlacompania ()
+main:BEGIN
+	SELECT COUNT(codigo_empleado) AS Cantidad_de_empleado FROM empleado
+END main//
+
+DELIMITER ;
+	
+DROP PROCEDURE IF EXISTS pagopromedio2009;
+	
+CREATE PROCEDURE pagopromedio2009 ()
+main:BEGIN
+	SELECT AVG(total) AS Pago_Promedio FROM pago WHERE YEAR(fecha_pago) = 2009
+END main//
+
+DELIMITER ;
+
+--EJ 21
+
+DROP PROCEDURE IF EXISTS pedidoestadodesc;
+	
+CREATE PROCEDURE pedidoestadodesc ()
+main:BEGIN
+	SELECT COUNT(cod_pedido), estado FROM pedido GROUP BY estado;
+END main//
+
+DELIMITER ;
+
+--EJ 22
+
+DROP PROCEDURE IF EXISTS pedidoestadodesc;
+	
+CREATE PROCEDURE pedidoestadodesc ()
+main:BEGIN
+	SELECT COUNT(codigo_pedido) AS contador, estado FROM pedido GROUP BY estado ORDER BY contador DESC;
+END main //
+
+DELIMITER ;
+
+--EJ 23
+
+DROP PROCEDURE IF EXISTS preciominmax;
+	
+CREATE PROCEDURE preciominmax ()
+main:BEGIN
+	select nombre, precio_venta from producto where precio_venta =(select max(precio_venta) FROM producto) or precio_venta = (select min(precio_venta) FROM producto)
+END main //
+
+DELIMITER ;
